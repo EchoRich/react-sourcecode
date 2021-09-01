@@ -1,17 +1,29 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+/*
+ * @Author: your name
+ * @Date: 2021-07-02 09:05:06
+ * @LastEditTime: 2021-07-13 08:32:23
+ * @LastEditors: Please set LastEditors
+ * @Description: In User Settings Edit
+ * @FilePath: \reactproject\src\index.js
+ */
+import React from './react';
+import ReactDOM from './react-dom';
+class Welcome extends React.Component{
+  render() {
+     return (    
+       <h1 className="title" style={{color: 'red'}}>
+         <span>hello</span>
+         {this.props.name}
+       </h1>
+      
+     )
+  }
+
+}
+ let element =  <Welcome name="yuting"/>
+  console.log(element)
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+element,
   document.getElementById('root')
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
