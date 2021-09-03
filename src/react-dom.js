@@ -46,7 +46,7 @@ import {REACT_TEXT} from  './constants'
          dom  = document.createElement(type)
         }
 
-         if(props){
+         if(props){ // 如果含有其他属性的话
            updateProps(dom ,{},  props)
            if(props.children){
             if(typeof props.children&&props.children.type){
