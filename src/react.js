@@ -5,7 +5,7 @@ import {Component} from  './Component'
     if(arguments.length>3){
       // it may have more than one child
      props.children  = Array.from(arguments).slice(2).map(wrapToVdom)
-    }else if(children){
+    }else {
 
     props.children  = wrapToVdom(children) 
     }

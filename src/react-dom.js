@@ -33,7 +33,7 @@ import {REACT_TEXT} from  './constants'
       if(type=== REACT_TEXT){
          dom  = document.createTextNode(vdom.content)
       }else if(typeof type=="function"){// 说明这是一个创建function 的函数
-        debugger
+   
          if(type.isReactComponent){
           //  this is class component
           return mountClassComponent(vdom)
@@ -68,6 +68,8 @@ import {REACT_TEXT} from  './constants'
             for(let attr  in  styleObject){
                dom.style[attr] = styleObject[attr]
             }
+         }else if(key.startsWith("on")){
+           dom[key.toLocaleLowerCase()]=newProps[key]
          }else{
             dom[key] = newProps[key]
          }
