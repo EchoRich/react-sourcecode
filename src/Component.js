@@ -1,3 +1,4 @@
+import {findDom, compareTwoVdom} from './react-dom'
 class  Updater{
    constructor(classInstance) {
      this.classInstance = classInstance;
@@ -42,7 +43,7 @@ class  Updater{
 }
 function shouldUpdate(classInstance,  nextState) {
   classInstance.state = nextState;
-   classInstance.updateComponent()
+   classInstance.forceUpdate()
 
 }
 export class Component{
@@ -56,7 +57,19 @@ export class Component{
     this.updater.addState(partialState, callback)
 
   }
-  updateComponent(){
-    console.log("update component")
+  /**
+   * 组件更新
+   * 1.获取老的虚拟DOM， react元素
+   * 2.根据最新的属性和状态计算出行的虚拟DOM
+   * 3.然后根据比较查找差异把这些差异更新到真实DOM上面
+  */
+  forceUpdate(){
+    let oldRenderVdom  = this.oldRenderVdom;//老的虚拟DOM
+    //根据老的虚拟DOM 查找到老的真实dom
+    let oldDom  =   findDom(oldRenderVdom )
+    let newRenderVdom  = this.render()
+     compareTwoVdom(oldDom.parentNode,oldRenderVdom, newRenderVdom)
+      this.oldRenderVdom  = newRenderVdom
+    
   }
 }
