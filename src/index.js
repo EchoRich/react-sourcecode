@@ -1,56 +1,51 @@
-/*
- * @Author: your name
- * @Date: 2021-07-02 09:05:06
- * @LastEditTime: 2021-07-13 08:32:23
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \reactproject\src\index.js
- */
+// 如果没有newPromisj或者是setTimeout的话， 那么就先放到一个队列中去， 否则就直接处理了 
 import React from './react';
 import ReactDOM from './react-dom';
-// class Welcome extends React.Component{
-//   render() {
-//      return (    
-//        <h1 className="title" style={{color: 'red'}}>
-//          <span>hello</span>
-//          {this.props.name}
-//        </h1>
-      
-//      )
-//   }
+//  class TextInput extends React.Component{
+//     constructor(props){
+//       super(props)
+//       this.inputRef  = React.createRef()
 
-// }
-//  let element =  <Welcome name="yuting"/>
-//   console.log(element)
+//     }
+//     getFocus =() => {
+//       this.inputRef.current.focus()
+//     }
+//     render(){
+//        return (
+//          <>
+//          <input type="text" ref={this.inputRef}/>
+//          </>
+//        )
+//     }
+//  }
+ function TextInput (props,ref) {
+    return (
+      <>
+      <input type="text" ref={ref}/>
+      </>
+    )
+ }
+ let ForwardTextInpur  = React.forwardRef(TextInput)
+class Form extends React.Component{
+  constructor (props) {
+    super(props)
+    this.textInputRef  = React.createRef()
 
-// ReactDOM.render(
-// element,
-//   document.getElementById('root')
-// );
-class Counter extends React.Component{
-  state={
-    number: 0
-  } // 定义状态有两种方法 ， 一个是constructor
-  handleClick=() => {
-    this.setState({
-    number:this.state.number+1 })
-     console.log(1111, this.state.number)
-  
   }
-  render(){
+  getTextInpuFocus=() => {
+    this.textInputRef.current.focus()
+  }
+  render() {
      return (
-        <div>
-   <p>{this.state.number}</p>
-   <button onClick={this.handleClick}>+</button>
-    
-          
-        </div>
+       <>
+       <ForwardTextInpur ref ={this.textInputRef}>
+       </ForwardTextInpur>
+       <button onClick={this.getTextInpuFocus}> getFocus</button>
+       </>
      )
   }
-
-
 }
-  let element =  <Counter />
+  let element =  <Form />
   console.log(element)
 
 ReactDOM.render(

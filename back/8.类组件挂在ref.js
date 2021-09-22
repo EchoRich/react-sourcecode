@@ -1,11 +1,4 @@
-/*
- * @Author: your name
- * @Date: 2021-07-02 09:07:30
- * @LastEditTime: 2021-07-13 08:32:46
- * @LastEditors: Please set LastEditors
- * @Description: In User Settings Edit
- * @FilePath: \reactproject\src\reactdom.js
- */
+// 如果ref绑定了 一个类组件 那么ref.current  = new Class
 import {addEvent} from './event'
 
 import {REACT_TEXT} from  './constants'
@@ -48,7 +41,7 @@ import {REACT_TEXT} from  './constants'
 
       }else{
          dom  = document.createElement(type)
-      }
+        }
 
          if(props){ // 如果含有其他属性的话
            updateProps(dom ,{},  props)
